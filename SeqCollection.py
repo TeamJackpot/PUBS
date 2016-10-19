@@ -40,8 +40,9 @@ def make_grid(path):
     df["Amino Acid Numeric"] = df["Amino Acid"].map(amino)
 
     grid = pd.crosstab(df["Amino Acid Numeric"],df["Positions"])
+    wt_count = df['Codons'].value_counts()["WU"]
 
-    return(grid)
+    return(grid, wt_count)
 
 ts1 = make_grid('OutputCGTGAT.fastq') #CobaltT0R1
 ts2 = make_grid('OutputACATCG.fastq') #CobaltT1R1
